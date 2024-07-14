@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .slide {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+
+  <title>実況天気図</title>
+  
+  <link href="../css/Weather_chart_back.css" rel="stylesheet" type="text/css">
+    
+  <script Language="JavaScript">
+    function openWin(str)
+    {
+      window.open(str,"Sample","width=1280,height=720");
+    }
+  </script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+  <div class="box">
+    <div style="text-align: center">
+      <p class="resizeimage">
+        <span style="cursor:zoom-in">
+          <img class="slide active" src="https://www.sunny-spot.net/chart/spas_00_new.jpg" alt="1日目">
+        </span>
+    </div>
+          
+  <script>
+    const slides = document.getElementsByClassName('slide');
+    let activeIndex = 0;
+
+    function changeSlide(index) {
+      slides[activeIndex].classList.remove('active');
+      activeIndex = index;
+      slides[activeIndex].classList.add('active');
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowLeft') {
+        const newIndex = activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
+        changeSlide(newIndex);
+      } else if (event.key === 'ArrowRight') {
+        const newIndex = activeIndex === slides.length - 1 ? 0 : activeIndex + 1;
+        changeSlide(newIndex);
+      }
+    });
+  </script>
+  </div>
+</body>
+</html>
